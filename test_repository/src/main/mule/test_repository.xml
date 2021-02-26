@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="7a138b8f-255d-442b-a313-4553ca9ea200" >
+		<http:listener-connection host="0.0.0.0" port="8082" />
+	</http:listener-config>
+	<flow name="test_repositoryFlow" doc:id="45db5c0e-1c23-4147-ad3b-7a756e0a6c25" >
+		<http:listener doc:name="Listener" doc:id="6284954c-f29d-4a4e-8165-7b6e9d6253eb" config-ref="HTTP_Listener_config" path="/testrepo"/>
+		<set-payload value="testrepocommit" doc:name="Set Payload" doc:id="3705e313-44ac-458a-a22f-b0d0a5011fd4" />
+		<logger level="INFO" doc:name="Logger" doc:id="3fdd4f58-7a40-48b9-9ffa-1c4453004546" message="testlogger"/>
+	</flow>
+</mule>
